@@ -46,5 +46,17 @@ namespace SteamControllerDBClient.Properties {
                 this["SteamUser"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DefaultFileOpenDirectory {
+            get {
+                return ((string)(this["DefaultFileOpenDirectory"]));
+            }
+            set {
+                this["DefaultFileOpenDirectory"] = value;
+            }
+        }
     }
 }

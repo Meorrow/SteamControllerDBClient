@@ -41,7 +41,6 @@
             this.configFileTextBox = new System.Windows.Forms.TextBox();
             this.configFileButton = new System.Windows.Forms.Button();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.configNoticeLabel = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.gameNameTextBox = new System.Windows.Forms.TextBox();
             this.configNameTextBox = new System.Windows.Forms.TextBox();
@@ -50,9 +49,18 @@
             this.label6 = new System.Windows.Forms.Label();
             this.importConfigButton = new System.Windows.Forms.Button();
             this.configDetailsGroupBox = new System.Windows.Forms.GroupBox();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.fileImportTabPage = new System.Windows.Forms.TabPage();
+            this.diagnosticsTabPage = new System.Windows.Forms.TabPage();
+            this.logRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.whatIsThisLinkLabel = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             this.configFileGroupBox.SuspendLayout();
             this.configDetailsGroupBox.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.fileImportTabPage.SuspendLayout();
+            this.diagnosticsTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -71,13 +79,13 @@
             this.steamLocationTextBox.Location = new System.Drawing.Point(97, 24);
             this.steamLocationTextBox.Name = "steamLocationTextBox";
             this.steamLocationTextBox.ReadOnly = true;
-            this.steamLocationTextBox.Size = new System.Drawing.Size(569, 20);
+            this.steamLocationTextBox.Size = new System.Drawing.Size(562, 20);
             this.steamLocationTextBox.TabIndex = 1;
             // 
             // steamLocationButton
             // 
             this.steamLocationButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.steamLocationButton.Location = new System.Drawing.Point(672, 22);
+            this.steamLocationButton.Location = new System.Drawing.Point(665, 22);
             this.steamLocationButton.Name = "steamLocationButton";
             this.steamLocationButton.Size = new System.Drawing.Size(25, 23);
             this.steamLocationButton.TabIndex = 2;
@@ -102,7 +110,7 @@
             this.steamUserComboBox.FormattingEnabled = true;
             this.steamUserComboBox.Location = new System.Drawing.Point(97, 50);
             this.steamUserComboBox.Name = "steamUserComboBox";
-            this.steamUserComboBox.Size = new System.Drawing.Size(569, 21);
+            this.steamUserComboBox.Size = new System.Drawing.Size(519, 21);
             this.steamUserComboBox.TabIndex = 4;
             this.steamUserComboBox.SelectedIndexChanged += new System.EventHandler(this.steamUserComboBox_SelectedIndexChanged);
             // 
@@ -110,14 +118,15 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.whatIsThisLinkLabel);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.steamUserComboBox);
             this.groupBox1.Controls.Add(this.steamLocationTextBox);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.steamLocationButton);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(703, 86);
+            this.groupBox1.Size = new System.Drawing.Size(696, 86);
             this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Configuration";
@@ -129,13 +138,12 @@
             this.configFileGroupBox.Controls.Add(this.label3);
             this.configFileGroupBox.Controls.Add(this.configFileTextBox);
             this.configFileGroupBox.Controls.Add(this.configFileButton);
-            this.configFileGroupBox.Location = new System.Drawing.Point(12, 113);
+            this.configFileGroupBox.Location = new System.Drawing.Point(6, 98);
             this.configFileGroupBox.Name = "configFileGroupBox";
-            this.configFileGroupBox.Size = new System.Drawing.Size(703, 57);
+            this.configFileGroupBox.Size = new System.Drawing.Size(696, 57);
             this.configFileGroupBox.TabIndex = 6;
             this.configFileGroupBox.TabStop = false;
             this.configFileGroupBox.Text = "Controller Config";
-            this.configFileGroupBox.Visible = false;
             // 
             // label3
             // 
@@ -153,13 +161,13 @@
             this.configFileTextBox.Location = new System.Drawing.Point(97, 22);
             this.configFileTextBox.Name = "configFileTextBox";
             this.configFileTextBox.ReadOnly = true;
-            this.configFileTextBox.Size = new System.Drawing.Size(569, 20);
+            this.configFileTextBox.Size = new System.Drawing.Size(562, 20);
             this.configFileTextBox.TabIndex = 4;
             // 
             // configFileButton
             // 
             this.configFileButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.configFileButton.Location = new System.Drawing.Point(672, 20);
+            this.configFileButton.Location = new System.Drawing.Point(665, 20);
             this.configFileButton.Name = "configFileButton";
             this.configFileButton.Size = new System.Drawing.Size(25, 23);
             this.configFileButton.TabIndex = 5;
@@ -170,19 +178,6 @@
             // openFileDialog
             // 
             this.openFileDialog.Filter = "Steam Controller Database Config Files|*vdffz";
-            // 
-            // configNoticeLabel
-            // 
-            this.configNoticeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.configNoticeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.configNoticeLabel.Location = new System.Drawing.Point(12, 105);
-            this.configNoticeLabel.Name = "configNoticeLabel";
-            this.configNoticeLabel.Size = new System.Drawing.Size(703, 300);
-            this.configNoticeLabel.TabIndex = 7;
-            this.configNoticeLabel.Text = "Ensure the configuration settings are complete to contine...";
-            this.configNoticeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label4
             // 
@@ -200,7 +195,7 @@
             this.gameNameTextBox.Location = new System.Drawing.Point(97, 22);
             this.gameNameTextBox.Name = "gameNameTextBox";
             this.gameNameTextBox.ReadOnly = true;
-            this.gameNameTextBox.Size = new System.Drawing.Size(600, 20);
+            this.gameNameTextBox.Size = new System.Drawing.Size(593, 20);
             this.gameNameTextBox.TabIndex = 7;
             // 
             // configNameTextBox
@@ -210,7 +205,7 @@
             this.configNameTextBox.Location = new System.Drawing.Point(97, 48);
             this.configNameTextBox.Name = "configNameTextBox";
             this.configNameTextBox.ReadOnly = true;
-            this.configNameTextBox.Size = new System.Drawing.Size(600, 20);
+            this.configNameTextBox.Size = new System.Drawing.Size(593, 20);
             this.configNameTextBox.TabIndex = 9;
             // 
             // label5
@@ -230,7 +225,7 @@
             this.configDescriptionTextBox.Multiline = true;
             this.configDescriptionTextBox.Name = "configDescriptionTextBox";
             this.configDescriptionTextBox.ReadOnly = true;
-            this.configDescriptionTextBox.Size = new System.Drawing.Size(600, 112);
+            this.configDescriptionTextBox.Size = new System.Drawing.Size(593, 112);
             this.configDescriptionTextBox.TabIndex = 11;
             // 
             // label6
@@ -250,6 +245,7 @@
             this.importConfigButton.TabIndex = 12;
             this.importConfigButton.Text = "Import";
             this.importConfigButton.UseVisualStyleBackColor = true;
+            this.importConfigButton.Click += new System.EventHandler(this.importConfigButton_Click);
             // 
             // configDetailsGroupBox
             // 
@@ -262,22 +258,87 @@
             this.configDetailsGroupBox.Controls.Add(this.label6);
             this.configDetailsGroupBox.Controls.Add(this.configDescriptionTextBox);
             this.configDetailsGroupBox.Controls.Add(this.label5);
-            this.configDetailsGroupBox.Location = new System.Drawing.Point(12, 179);
+            this.configDetailsGroupBox.Location = new System.Drawing.Point(6, 161);
             this.configDetailsGroupBox.Name = "configDetailsGroupBox";
-            this.configDetailsGroupBox.Size = new System.Drawing.Size(703, 222);
+            this.configDetailsGroupBox.Size = new System.Drawing.Size(696, 222);
             this.configDetailsGroupBox.TabIndex = 14;
             this.configDetailsGroupBox.TabStop = false;
             this.configDetailsGroupBox.Text = "Config Details";
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.fileImportTabPage);
+            this.tabControl1.Controls.Add(this.diagnosticsTabPage);
+            this.tabControl1.Location = new System.Drawing.Point(12, 12);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(716, 420);
+            this.tabControl1.TabIndex = 15;
+            // 
+            // fileImportTabPage
+            // 
+            this.fileImportTabPage.Controls.Add(this.groupBox1);
+            this.fileImportTabPage.Controls.Add(this.configDetailsGroupBox);
+            this.fileImportTabPage.Controls.Add(this.configFileGroupBox);
+            this.fileImportTabPage.Location = new System.Drawing.Point(4, 22);
+            this.fileImportTabPage.Name = "fileImportTabPage";
+            this.fileImportTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.fileImportTabPage.Size = new System.Drawing.Size(708, 394);
+            this.fileImportTabPage.TabIndex = 0;
+            this.fileImportTabPage.Text = "File Import";
+            this.fileImportTabPage.UseVisualStyleBackColor = true;
+            // 
+            // diagnosticsTabPage
+            // 
+            this.diagnosticsTabPage.Controls.Add(this.logRichTextBox);
+            this.diagnosticsTabPage.Controls.Add(this.label7);
+            this.diagnosticsTabPage.Location = new System.Drawing.Point(4, 22);
+            this.diagnosticsTabPage.Name = "diagnosticsTabPage";
+            this.diagnosticsTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.diagnosticsTabPage.Size = new System.Drawing.Size(708, 394);
+            this.diagnosticsTabPage.TabIndex = 1;
+            this.diagnosticsTabPage.Text = "Diagnostics";
+            this.diagnosticsTabPage.UseVisualStyleBackColor = true;
+            // 
+            // logRichTextBox
+            // 
+            this.logRichTextBox.Location = new System.Drawing.Point(9, 53);
+            this.logRichTextBox.Name = "logRichTextBox";
+            this.logRichTextBox.Size = new System.Drawing.Size(693, 335);
+            this.logRichTextBox.TabIndex = 1;
+            this.logRichTextBox.Text = "";
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.label7.Location = new System.Drawing.Point(6, 14);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(696, 36);
+            this.label7.TabIndex = 0;
+            this.label7.Text = resources.GetString("label7.Text");
+            // 
+            // whatIsThisLinkLabel
+            // 
+            this.whatIsThisLinkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.whatIsThisLinkLabel.AutoSize = true;
+            this.whatIsThisLinkLabel.Location = new System.Drawing.Point(622, 53);
+            this.whatIsThisLinkLabel.Name = "whatIsThisLinkLabel";
+            this.whatIsThisLinkLabel.Size = new System.Drawing.Size(68, 13);
+            this.whatIsThisLinkLabel.TabIndex = 5;
+            this.whatIsThisLinkLabel.TabStop = true;
+            this.whatIsThisLinkLabel.Text = "What is this?";
+            this.whatIsThisLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.whatIsThisLinkLabel_LinkClicked);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(727, 414);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.configDetailsGroupBox);
-            this.Controls.Add(this.configFileGroupBox);
-            this.Controls.Add(this.configNoticeLabel);
+            this.ClientSize = new System.Drawing.Size(740, 444);
+            this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -288,6 +349,9 @@
             this.configFileGroupBox.PerformLayout();
             this.configDetailsGroupBox.ResumeLayout(false);
             this.configDetailsGroupBox.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.fileImportTabPage.ResumeLayout(false);
+            this.diagnosticsTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -306,7 +370,6 @@
         private System.Windows.Forms.TextBox configFileTextBox;
         private System.Windows.Forms.Button configFileButton;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
-        private System.Windows.Forms.Label configNoticeLabel;
         private System.Windows.Forms.TextBox configDescriptionTextBox;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox configNameTextBox;
@@ -315,6 +378,12 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button importConfigButton;
         private System.Windows.Forms.GroupBox configDetailsGroupBox;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage fileImportTabPage;
+        private System.Windows.Forms.TabPage diagnosticsTabPage;
+        private System.Windows.Forms.RichTextBox logRichTextBox;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.LinkLabel whatIsThisLinkLabel;
     }
 }
 
