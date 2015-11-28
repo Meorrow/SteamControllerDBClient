@@ -127,24 +127,37 @@ namespace SteamControllerDBClient
             if (!string.IsNullOrWhiteSpace(configFileTextBox.Text))
             {
                 Debug("Attempting to load config file " + configFileTextBox.Text);
-                using (StreamReader sr = File.OpenText(configFileTextBox.Text))
+                if (Path.GetExtension(configFileTextBox.Text).ToLower() == ".vdf")
                 {
-                    string fileContents = sr.ReadToEnd();
-
-                    try
+                    //This is a simple config file, nothing to parse
+                    Debug("Simple config file loaded, nothing to parse");
+                    loadedConfigFile = new ConfigFile();
+                    loadedConfigFile.GameName = "<Simple Config Loaded>";
+                    loadedConfigFile.Description = "";
+                    loadedConfigFile.Name = Path.GetFileName(configFileTextBox.Text);
+                    loadedConfigFile.FileName = Path.GetFileName(configFileTextBox.Text);
+                    loadedConfigFile.ConfigData = File.ReadAllText(configFileTextBox.Text);
+                }
+                else
+                {
+                    using (StreamReader sr = File.OpenText(configFileTextBox.Text))
                     {
-                        Debug("\tTrying parse config file");
-                        loadedConfigFile = JsonConvert.DeserializeObject<ConfigFile>(fileContents);
+                        string fileContents = sr.ReadToEnd();
 
-                        gameNameTextBox.Text = loadedConfigFile.GameName;
-                        configNameTextBox.Text = loadedConfigFile.Name;
-                        configDescriptionTextBox.Text = loadedConfigFile.Description;
-                    }
-                    catch
-                    {
-                        MessageBox.Show("Unable to parse config file, please re-download and try again");
+                        try
+                        {
+                            Debug("\tTrying parse config file");
+                            loadedConfigFile = JsonConvert.DeserializeObject<ConfigFile>(fileContents);
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Unable to parse config file, please re-download and try again");
+                        }
                     }
                 }
+                gameNameTextBox.Text = loadedConfigFile.GameName;
+                configNameTextBox.Text = loadedConfigFile.Name;
+                configDescriptionTextBox.Text = loadedConfigFile.Description;
             }
         }
 

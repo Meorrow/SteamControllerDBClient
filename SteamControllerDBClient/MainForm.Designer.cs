@@ -36,6 +36,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.steamUserComboBox = new System.Windows.Forms.ComboBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.whatIsThisLinkLabel = new System.Windows.Forms.LinkLabel();
             this.configFileGroupBox = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.configFileTextBox = new System.Windows.Forms.TextBox();
@@ -54,7 +55,6 @@
             this.diagnosticsTabPage = new System.Windows.Forms.TabPage();
             this.logRichTextBox = new System.Windows.Forms.RichTextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.whatIsThisLinkLabel = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             this.configFileGroupBox.SuspendLayout();
             this.configDetailsGroupBox.SuspendLayout();
@@ -131,6 +131,18 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Configuration";
             // 
+            // whatIsThisLinkLabel
+            // 
+            this.whatIsThisLinkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.whatIsThisLinkLabel.AutoSize = true;
+            this.whatIsThisLinkLabel.Location = new System.Drawing.Point(622, 53);
+            this.whatIsThisLinkLabel.Name = "whatIsThisLinkLabel";
+            this.whatIsThisLinkLabel.Size = new System.Drawing.Size(68, 13);
+            this.whatIsThisLinkLabel.TabIndex = 5;
+            this.whatIsThisLinkLabel.TabStop = true;
+            this.whatIsThisLinkLabel.Text = "What is this?";
+            this.whatIsThisLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.whatIsThisLinkLabel_LinkClicked);
+            // 
             // configFileGroupBox
             // 
             this.configFileGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -177,7 +189,7 @@
             // 
             // openFileDialog
             // 
-            this.openFileDialog.Filter = "Steam Controller Database Config Files|*vdffz";
+            this.openFileDialog.Filter = "Steam Controller Database Config Files|*vdffz|Valve Config Files|*vdf";
             // 
             // label4
             // 
@@ -320,18 +332,6 @@
             this.label7.Size = new System.Drawing.Size(696, 36);
             this.label7.TabIndex = 0;
             this.label7.Text = resources.GetString("label7.Text");
-            // 
-            // whatIsThisLinkLabel
-            // 
-            this.whatIsThisLinkLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.whatIsThisLinkLabel.AutoSize = true;
-            this.whatIsThisLinkLabel.Location = new System.Drawing.Point(622, 53);
-            this.whatIsThisLinkLabel.Name = "whatIsThisLinkLabel";
-            this.whatIsThisLinkLabel.Size = new System.Drawing.Size(68, 13);
-            this.whatIsThisLinkLabel.TabIndex = 5;
-            this.whatIsThisLinkLabel.TabStop = true;
-            this.whatIsThisLinkLabel.Text = "What is this?";
-            this.whatIsThisLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.whatIsThisLinkLabel_LinkClicked);
             // 
             // MainForm
             // 
