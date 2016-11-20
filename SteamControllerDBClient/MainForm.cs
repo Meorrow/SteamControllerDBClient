@@ -24,10 +24,10 @@ namespace SteamControllerDBClient
 
         public void Debug(string message, Exception ex = null)
         {
-            logRichTextBox.AppendText(message + "\r\n");
+            logRichTextBox.AppendText(message + "\r\n\r\n");
             if(ex != null)
             {
-                logRichTextBox.AppendText(ex.ToString() + "\r\n");
+                logRichTextBox.AppendText(ex.ToString() + "\r\n\r\n");
             }
         }
         public void GenericErrorHandler(Exception ex = null)
@@ -149,8 +149,9 @@ namespace SteamControllerDBClient
                             Debug("\tTrying parse config file");
                             loadedConfigFile = JsonConvert.DeserializeObject<ConfigFile>(fileContents);
                         }
-                        catch
+                        catch (Exception parseException)
                         {
+                            Debug("Error parsing config file", parseException);
                             MessageBox.Show("Unable to parse config file, please re-download and try again");
                         }
                     }
@@ -505,17 +506,27 @@ namespace SteamControllerDBClient
                         string[] parts = s.Split('\0');
                         if (parts.Length == 2)
                         {
-                            parsedFields.Add(parts[0], parts[1]);
+                            parsedFields.Add(parts[0].ToLower(), parts[1]);
                         }
                     }
+
+                    if (!parsedFields.ContainsKey("exe")) continue;
 
                     string exe = parsedFields["exe"];
                     string sha1Hash = CalculateSHA1(exe, Encoding.ASCII);
                     parsedFields.Add("sha1", sha1Hash.ToLower());
 
-                    if (parsedFields.ContainsKey("AppName"))
+                    if (parsedFields.ContainsKey("appname"))
                     {
-                        apps.Add(parsedFields["AppName"], parsedFields);
+                        string key = parsedFields["appname"];
+                        if(parsedFields.ContainsKey("exe"))
+                        {
+                            key += " (" + parsedFields["exe"] + ")";
+                        }
+                        if (!apps.ContainsKey(key))
+                        {
+                            apps.Add(key, parsedFields);
+                        }
                     }
                 }
 
